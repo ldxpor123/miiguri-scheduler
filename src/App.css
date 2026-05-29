@@ -122,7 +122,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; b
 .report-select { display: flex; align-items: center; gap: 10px; }
 .report-select label { font-size: 13px; color: var(--text-secondary); font-weight: 500; white-space: nowrap; }
 .report-select select { flex: 1; }
-.report-meta-bar { display: flex; align-items: center; gap: 10px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
+.report-meta-bar { display: flex; align-items: center; gap: 10px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); min-width: 0; overflow: hidden; }
 
 /* Chat export area */
 .chat-export-wrapper { background: var(--export-bg); border-radius: 10px; padding: 14px; }
@@ -237,4 +237,50 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; b
 
   /* Won check bigger tap target */
   .won-check { min-width: 40px; min-height: 40px; width: 40px; height: 40px; font-size: 16px; }
+}
+
+/* ── Mobile & touch ── */
+.won-check { min-width: 36px; min-height: 36px; width: 36px; height: 36px; }
+.tab { min-height: 40px; }
+.btn.small { min-height: 36px; }
+.lang-toggle span { min-height: 32px; display: flex; align-items: center; }
+
+/* Prevent page zoom on iOS when session meta text is long */
+.report-meta-bar { flex-wrap: nowrap; overflow: hidden; }
+.report-meta-bar strong, .report-meta-bar span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+@media (max-width: 480px) {
+  #root { padding: 1rem 0.75rem 5rem; }
+  .header { padding: 1rem; gap: 10px; }
+  .header h1 { font-size: 16px; }
+  .header p { font-size: 11px; }
+  .header-icon { width: 38px; height: 38px; font-size: 17px; }
+  .tabs { gap: 2px; padding: 3px; }
+  .tab { font-size: 11px; padding: 7px 2px; gap: 2px; }
+  .form-row { grid-template-columns: 1fr; }
+  .card { padding: 0.875rem 1rem; }
+  .slot-item { gap: 6px; flex-wrap: nowrap; }
+  .slot-info { gap: 7px; min-width: 0; flex: 1; overflow: hidden; }
+  .slot-member { font-size: 12px; }
+  .slot-meta { font-size: 10px; white-space: normal; }
+  .slot-badge { font-size: 10px; padding: 2px 7px; flex-shrink: 0; }
+  .chat-bubble { max-width: 200px; font-size: 13px; padding: 8px 11px; }
+  .chat-log { max-height: 340px; }
+  .edit-row { flex-wrap: wrap; gap: 4px; }
+  .edit-input { min-width: 0; width: 100%; }
+  .msg-type-selector { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; gap: 5px; -webkit-overflow-scrolling: touch; }
+  .msg-type-btn { white-space: nowrap; flex-shrink: 0; padding: 6px 10px; font-size: 11px; }
+  .chat-input-row input { font-size: 16px; } /* prevents iOS zoom */
+  .schedule-header { flex-direction: column; align-items: flex-start; }
+  .profile-row { flex-wrap: wrap; gap: 10px; }
+  .report-select label { display: none; }
+  .report-select select { font-size: 12px; }
+  .modal-box { padding: 1.25rem; }
+  .modal-hint { font-size: 12px; }
+  .won-check { min-width: 40px; min-height: 40px; width: 40px; height: 40px; font-size: 16px; }
+  /* Prevent session info card from overflowing viewport */
+  .report-meta-bar { max-width: 100%; }
+  .export-header { flex-wrap: nowrap; overflow: hidden; }
+  .export-member-name { font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .export-meta { font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 }
